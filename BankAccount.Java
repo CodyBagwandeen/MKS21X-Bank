@@ -18,9 +18,9 @@ public class BankAccount {
   }
 
   public String getPassword() {
-    return password;
+    return password;   //wrote this just to make sure that set password works,
   }
-  
+
   public void setPassword( String newpass) {
     password = newpass;
   }
@@ -44,6 +44,21 @@ public class BankAccount {
       return true;
     } else {
       return false;
+    }
+  }
+
+public boolean transferTo(BankAccount other, double amount, String password){
+  if (authenticate(password) && withdraw(amount)) {
+    other.deposit(amount);
+    return true;
+} else {return false;
+  }
+}
+
+  private boolean authenticate(String password){
+    if (this.password.equals(password))
+    return true;
+    else { return false;
     }
   }
 
